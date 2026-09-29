@@ -11,7 +11,7 @@ import os, base64
 
 import config
 from src.utils.state import ensure_db, get_pipeline_result, get_current_scenario, get_current_data_mode
-from src.utils.ui_helpers import inject_base_css, metric_card, status_pill, provenance_badge
+from src.utils.ui_helpers import inject_base_css, metric_card, provenance_badge, render_sidebar, status_pill
 
 
 STATION_IMAGES={}
@@ -23,6 +23,7 @@ def local_photo(station):
 
 st.set_page_config(page_title="Station Monitor — PolarOps AI", page_icon="🗺️", layout="wide", initial_sidebar_state="expanded")
 inject_base_css()
+render_sidebar()
 ensure_db()
 
 st.markdown("## 🗺️ Station Monitor")

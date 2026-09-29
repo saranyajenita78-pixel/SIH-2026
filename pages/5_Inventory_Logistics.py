@@ -10,10 +10,11 @@ import plotly.graph_objects as go
 
 import config
 from src.utils.state import ensure_db, get_pipeline_result, get_current_scenario, get_current_data_mode
-from src.utils.ui_helpers import inject_base_css, metric_card, status_pill, simulated_data_banner, provenance_badge
+from src.utils.ui_helpers import inject_base_css, metric_card, provenance_badge, render_sidebar, simulated_data_banner, status_pill
 
 st.set_page_config(page_title="Inventory & Logistics — PolarOps AI", page_icon="📦", layout="wide", initial_sidebar_state="expanded")
 inject_base_css()
+render_sidebar()
 ensure_db()
 
 st.markdown("## 📦 Inventory & Logistics")

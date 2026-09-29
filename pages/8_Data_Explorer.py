@@ -9,11 +9,12 @@ import pandas as pd
 
 import config
 from src.utils.state import ensure_db, get_pipeline_result, get_current_scenario, get_current_data_mode
-from src.utils.ui_helpers import inject_base_css, provenance_badge, metric_card
+from src.utils.ui_helpers import inject_base_css, metric_card, provenance_badge, render_sidebar
 from src.database import db
 
 st.set_page_config(page_title="Data Explorer — PolarOps AI", page_icon="🔎", layout="wide", initial_sidebar_state="expanded")
 inject_base_css()
+render_sidebar()
 ensure_db()
 
 st.markdown("## 🔎 Data Explorer")

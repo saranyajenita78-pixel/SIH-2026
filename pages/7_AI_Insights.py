@@ -2,11 +2,11 @@ import streamlit as st
 import config
 import re
 from src.utils.state import ensure_db, get_pipeline_result, get_current_scenario, get_current_data_mode
-from src.utils.ui_helpers import inject_base_css, provenance_badge
+from src.utils.ui_helpers import inject_base_css, provenance_badge, render_sidebar
 from src.ai.copilot import ask as ask_real_ai, is_configured as real_ai_configured
 
 st.set_page_config(page_title="AI Copilot — Polar Twin Sentinel", page_icon="✦", layout="wide", initial_sidebar_state="expanded")
-inject_base_css(); ensure_db()
+inject_base_css(); render_sidebar(); ensure_db()
 scenario=get_current_scenario(); mode=get_current_data_mode()
 try: result=get_pipeline_result(scenario,mode)
 except RuntimeError as exc: st.error(str(exc)); st.stop()

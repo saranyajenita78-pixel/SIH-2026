@@ -13,10 +13,9 @@ def inject_base_css():
     .stApp{background:radial-gradient(circle at 82% -5%,#163e67 0%,#071b31 35%,#03101f 78%);color:var(--ice)}
     [data-testid="stHeader"]{background:rgba(2,12,24,.72);backdrop-filter:blur(14px);height:3.4rem}
     [data-testid="stToolbar"]{display:flex}
-    section[data-testid="stSidebar"]{width:235px !important;min-width:235px !important;max-width:235px !important;background:linear-gradient(180deg,#061a31 0%,#031224 100%);border-right:1px solid #173a59}
-    section[data-testid="stSidebar"] > div:first-child{width:235px !important;min-width:235px !important;max-width:235px !important}
-    section[data-testid="stSidebar"] > div:first-child > div{height:100%;overflow-y:auto;overflow-x:hidden}
-    section[data-testid="stSidebar"] *{color:#dff2ff}
+    [data-testid="stSidebar"]{width:235px !important;background:linear-gradient(180deg,#061a31 0%,#031224 100%);border-right:1px solid #173a59}
+    [data-testid="stSidebar"] > div:first-child{width:235px !important}
+    [data-testid="stSidebar"] *{color:#dff2ff}
     [data-testid="stSidebarNav"]{display:none}
     [data-testid="stSidebarContent"]{padding-top:.55rem}
     .block-container{max-width:1280px;padding-top:.6rem;padding-bottom:2.5rem}
@@ -27,8 +26,8 @@ def inject_base_css():
     .side-section{font-size:.63rem;font-weight:850;letter-spacing:.15em;color:#6f98b9;margin:14px 3px 7px}
     .side-divider{height:1px;background:#173653;margin:17px 0 13px}
     .side-status{margin-top:12px;padding:10px 11px;border-radius:12px;border:1px solid #174866;background:rgba(8,31,52,.8);font-size:.72rem;color:#bfeaff;line-height:1.45}.side-status small{color:#7395b2;font-size:.62rem}.live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#31e7ad;box-shadow:0 0 12px #31e7ad;margin-right:5px}
-    section[data-testid="stSidebar"] .stPageLink{border-radius:10px;margin:2px 0;padding:.34rem .55rem}section[data-testid="stSidebar"] .stPageLink:hover{background:rgba(44,132,196,.16)}
-    section[data-testid="stSidebar"] .stSelectbox label{font-size:.7rem;color:#789bb8}
+    [data-testid="stSidebar"] .stPageLink{border-radius:10px;margin:2px 0;padding:.34rem .55rem}.stPageLink:hover{background:rgba(44,132,196,.16)}
+    [data-testid="stSidebar"] .stSelectbox label{font-size:.7rem;color:#789bb8}
     .pts-hero{position:relative;overflow:hidden;border:1px solid #245b82;border-radius:24px;padding:23px 28px 18px;margin-bottom:15px;min-height:165px;background:linear-gradient(90deg,rgba(4,19,35,.98) 0%,rgba(5,25,44,.92) 54%,rgba(6,32,53,.78) 100%);box-shadow:0 18px 55px rgba(0,0,0,.28)}
     .pts-hero:after{content:"";position:absolute;right:-5%;top:-25%;width:45%;height:260px;background:radial-gradient(circle,rgba(34,211,238,.18),transparent 67%);pointer-events:none}
     .hero-top{display:flex;justify-content:space-between;gap:30px;align-items:flex-start;position:relative;z-index:1}.hero-slogan{font-size:1rem;color:#e7f8ff;text-align:right;line-height:1.35;margin-top:7px;font-family:Georgia,serif;text-shadow:0 2px 14px #00101d}.hero-bottom{display:flex;align-items:center;gap:12px;margin-top:13px;position:relative;z-index:1}.hero-note{font-size:.68rem;color:#86a9c5}
@@ -46,6 +45,40 @@ def inject_base_css():
     @media (max-width:1100px){.status-grid{grid-template-columns:repeat(2,1fr)}.ops-strip{grid-template-columns:1fr}.station-metrics{grid-template-columns:repeat(2,1fr)}.pts-title{font-size:2rem}.hero-slogan{display:none}.block-container{max-width:96%}}
     </style>
     """, unsafe_allow_html=True)
+
+
+def render_sidebar():
+    if "scenario" not in st.session_state:
+        st.session_state.scenario = "NORMAL"
+
+    with st.sidebar:
+        st.markdown('''<div class="side-brand"><div class="side-logo">❄</div><div><div class="side-title">POLAR TWIN</div><div class="side-subtitle">SENTINEL</div><div class="side-tag">Monitor • Predict • Prevent</div></div></div>''', unsafe_allow_html=True)
+        st.markdown('<div class="side-section">MISSION CONTROL</div>', unsafe_allow_html=True)
+        st.page_link("app.py", label="⌂  Dashboard")
+        st.page_link("pages/1_Station_Monitor.py", label="◈  Station Monitor")
+        st.page_link("pages/2_Environment.py", label="◉  Environment")
+        st.page_link("pages/3_Energy_Intelligence.py", label="⚡  Energy Intelligence")
+        st.page_link("pages/4_Equipment_Health.py", label="⚙  Equipment Health")
+        st.page_link("pages/5_Inventory_Logistics.py", label="▣  Inventory & Logistics")
+        st.page_link("pages/6_Risk_Alerts.py", label="⚠  Risk & Alerts")
+        st.page_link("pages/7_AI_Insights.py", label="✦  AI Insights")
+        st.page_link("pages/8_Data_Explorer.py", label="⌁  Data Explorer")
+        st.page_link("pages/9_Model_Performance.py", label="◫  Model Performance")
+        st.page_link("pages/10_What_If_Simulation.py", label="◇  What-If Simulation")
+        st.page_link("pages/11_System_Overview.py", label="◎  System Overview")
+        st.markdown('<div class="side-divider"></div>', unsafe_allow_html=True)
+        st.markdown('<div class="side-section">SCENARIO LAB</div>', unsafe_allow_html=True)
+        st.session_state.scenario = st.selectbox(
+            "Scenario",
+            config.DEMO_SCENARIOS,
+            index=config.DEMO_SCENARIOS.index(st.session_state.scenario),
+            label_visibility="collapsed",
+        )
+        if st.button("↻  Refresh live data", use_container_width=True):
+            st.cache_resource.clear()
+            st.cache_data.clear()
+            st.rerun()
+        st.markdown('<div class="side-status"><span class="live-dot"></span><b>LATEST PUBLISHED</b><span> NCPOR</span><br><small>Published station observations • IMD forecast kept separate</small></div>', unsafe_allow_html=True)
 
 
 def status_pill(label):

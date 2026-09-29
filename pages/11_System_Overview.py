@@ -1,6 +1,6 @@
 import streamlit as st
-from src.utils.ui_helpers import inject_base_css
-st.set_page_config(page_title="SIH Solution Overview — Polar Twin Sentinel", page_icon="◈", layout="wide", initial_sidebar_state="expanded"); inject_base_css()
+from src.utils.ui_helpers import inject_base_css, render_sidebar
+st.set_page_config(page_title="SIH Solution Overview — Polar Twin Sentinel", page_icon="◈", layout="wide", initial_sidebar_state="expanded"); inject_base_css(); render_sidebar()
 st.markdown('<div class="pts-hero"><div class="pts-kicker">SIH 2026 • PROPOSED SOLUTION</div><div class="pts-title">DIGITAL TWIN OF MAITRI + BHARATI</div><div class="pts-sub">Real environmental observations + IMD forecast intelligence + AI prediction + what-if simulation + offline support.</div></div>',unsafe_allow_html=True)
 st.markdown('## PROPOSED SOLUTION')
 items=[('Create the Digital Twin','Build a live virtual representation of Maitri and Bharati research stations.'),('Collect real data','Use NCPOR observations and keep IMD Polar WRF forecasts as a separate forecast stream.'),('Unify operations','Combine environmental, energy, equipment, logistics and resource signals in one platform.'),('AI prediction','Detect unusual conditions, predict risks and forecast energy needs.'),('What-if simulation','Test possible situations and compare projected outcomes before action.'),('Alerts + recommendations','Prioritize issues and provide explainable recommended actions with human approval.')]

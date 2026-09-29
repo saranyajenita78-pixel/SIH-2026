@@ -6,11 +6,12 @@ import os, re, base64
 
 import config
 from src.utils.state import ensure_db, get_pipeline_result
-from src.utils.ui_helpers import inject_base_css, provenance_badge, status_pill
+from src.utils.ui_helpers import inject_base_css, provenance_badge, render_sidebar, status_pill
 from src.ai.copilot import ask as ask_real_ai, is_configured as real_ai_configured
 
 st.set_page_config(page_title="Polar Twin Sentinel", page_icon="🧊", layout="wide", initial_sidebar_state="expanded")
 inject_base_css(); ensure_db()
+render_sidebar()
 
 # Bundled station reference images. No remote image hosts are used, so the dashboard
 # remains stable even when the machine has no internet connection.
@@ -23,30 +24,6 @@ def station_image_url(station_id):
     mime = "image/png" if ext == ".png" else "image/svg+xml"
     with open(path, "rb") as fh:
         return f"data:{mime};base64," + base64.b64encode(fh.read()).decode("ascii")
-
-if "scenario" not in st.session_state: st.session_state.scenario="NORMAL"
-with st.sidebar:
-    st.markdown('''<div class="side-brand"><div class="side-logo">❄</div><div><div class="side-title">POLAR TWIN</div><div class="side-subtitle">SENTINEL</div><div class="side-tag">Monitor • Predict • Prevent</div></div></div>''', unsafe_allow_html=True)
-    st.markdown('<div class="side-section">MISSION CONTROL</div>', unsafe_allow_html=True)
-    st.page_link("app.py",label="⌂  Dashboard")
-    st.page_link("pages/1_Station_Monitor.py",label="◈  Station Monitor")
-    st.page_link("pages/2_Environment.py",label="◉  Environment")
-    st.page_link("pages/3_Energy_Intelligence.py",label="⚡  Energy Intelligence")
-    st.page_link("pages/4_Equipment_Health.py",label="⚙  Equipment Health")
-    st.page_link("pages/5_Inventory_Logistics.py",label="▣  Inventory & Logistics")
-    st.page_link("pages/6_Risk_Alerts.py",label="⚠  Risk & Alerts")
-    st.page_link("pages/7_AI_Insights.py",label="✦  AI Insights")
-    st.page_link("pages/8_Data_Explorer.py",label="⌁  Data Explorer")
-    st.page_link("pages/9_Model_Performance.py",label="◫  Model Performance")
-    st.page_link("pages/10_What_If_Simulation.py",label="◇  What-If Simulation")
-    st.page_link("pages/11_System_Overview.py",label="◎  System Overview")
-    st.markdown('<div class="side-divider"></div>', unsafe_allow_html=True)
-    st.markdown('<div class="side-section">SCENARIO LAB</div>', unsafe_allow_html=True)
-    st.session_state.scenario=st.selectbox("Scenario",config.DEMO_SCENARIOS,index=config.DEMO_SCENARIOS.index(st.session_state.scenario),label_visibility="collapsed")
-    if st.button("↻  Refresh live data", use_container_width=True):
-        st.cache_resource.clear(); st.cache_data.clear(); st.rerun()
-    st.markdown('<div class="side-status"><span class="live-dot"></span><b>LATEST PUBLISHED</b><span> NCPOR</span><br><small>Published station observations • IMD forecast kept separate</small></div>',unsafe_allow_html=True)
-
 
 try:
     result=get_pipeline_result(st.session_state.scenario, "REAL")
