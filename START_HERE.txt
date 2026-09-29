@@ -1,0 +1,16 @@
+POLAR TWIN SENTINEL - QUICK START
+
+1. Keep this entire folder together.
+2. Double-click SETUP_POLAR_TWIN.bat once. It installs requirements and creates .env if missing.
+3. Open .env (same folder as app.py) and replace your_openai_api_key_here with YOUR NEW OpenAI API key.
+4. Save .env.
+5. Double-click START_POLAR_TWIN.bat.
+6. Open the AI Insights page and confirm "OPENAI AI AGENT" is connected.
+
+IMPORTANT:
+- Never share your API key or put it in screenshots/GitHub.
+- Do not use an older PolarTwinSentinel_SIH2026_FINAL folder.
+- Real NCPOR observations are used when the official public source succeeds.
+- Official IMD Polar WRF forecasts are used only when an official forecast feed/export is available.
+- Internal equipment/energy/logistics telemetry is marked SIMULATED_DEMO in the prototype because it is not publicly available.
+- AI results are model predictions and should be reviewed by authorized personnel before operational action.

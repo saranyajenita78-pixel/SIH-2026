@@ -1,0 +1,2 @@
+station_id,timestamp,temperature_c,humidity_pct,pressure_hpa,wind_speed_kmh,wind_dir_deg,source,data_status
+Bharati,2026-09-28,-13.64,84.4,977.1,27.52072,,NCPOR/NPDC Live,REAL_OBSERVED

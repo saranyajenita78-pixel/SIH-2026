@@ -1,0 +1,2 @@
+station_id,timestamp,temperature_c,humidity_pct,pressure_hpa,wind_speed_kmh,wind_dir_deg,source,data_status
+Maitri,2026-09-27 23:59:00,-12.8,44.64,943.98,83.8956,176.0,NCPOR/NPDC Live,REAL_OBSERVED

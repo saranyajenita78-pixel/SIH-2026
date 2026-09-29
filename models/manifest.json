@@ -1,0 +1,24 @@
+{
+  "generated_at": "2026-09-15T17:00:12.379844+00:00",
+  "training_data": "SIMULATED_DEMO operational telemetry",
+  "reason": "Internal station equipment/energy telemetry is not publicly available.",
+  "runtime_note": "Dashboard uses the compact selected-scenario pipeline; artifacts are retained for audit/reproducibility.",
+  "artifacts": [
+    {
+      "file": "maitri_equipment_anomaly.joblib",
+      "type": "IsolationForest + z-score baseline"
+    },
+    {
+      "file": "maitri_energy_forecast.joblib",
+      "type": "RandomForestRegressor energy forecast"
+    },
+    {
+      "file": "bharati_equipment_anomaly.joblib",
+      "type": "IsolationForest + z-score baseline"
+    },
+    {
+      "file": "bharati_energy_forecast.joblib",
+      "type": "RandomForestRegressor energy forecast"
+    }
+  ]
+}
