@@ -13,9 +13,10 @@ def inject_base_css():
     .stApp{background:radial-gradient(circle at 82% -5%,#163e67 0%,#071b31 35%,#03101f 78%);color:var(--ice)}
     [data-testid="stHeader"]{background:rgba(2,12,24,.72);backdrop-filter:blur(14px);height:3.4rem}
     [data-testid="stToolbar"]{display:flex}
-    [data-testid="stSidebar"]{width:235px !important;background:linear-gradient(180deg,#061a31 0%,#031224 100%);border-right:1px solid #173a59}
-    [data-testid="stSidebar"] > div:first-child{width:235px !important}
-    [data-testid="stSidebar"] *{color:#dff2ff}
+    section[data-testid="stSidebar"]{width:235px !important;min-width:235px !important;max-width:235px !important;background:linear-gradient(180deg,#061a31 0%,#031224 100%);border-right:1px solid #173a59}
+    section[data-testid="stSidebar"] > div:first-child{width:235px !important;min-width:235px !important;max-width:235px !important}
+    section[data-testid="stSidebar"] > div:first-child > div{height:100%;overflow-y:auto;overflow-x:hidden}
+    section[data-testid="stSidebar"] *{color:#dff2ff}
     [data-testid="stSidebarNav"]{display:none}
     [data-testid="stSidebarContent"]{padding-top:.55rem}
     .block-container{max-width:1280px;padding-top:.6rem;padding-bottom:2.5rem}
@@ -26,8 +27,8 @@ def inject_base_css():
     .side-section{font-size:.63rem;font-weight:850;letter-spacing:.15em;color:#6f98b9;margin:14px 3px 7px}
     .side-divider{height:1px;background:#173653;margin:17px 0 13px}
     .side-status{margin-top:12px;padding:10px 11px;border-radius:12px;border:1px solid #174866;background:rgba(8,31,52,.8);font-size:.72rem;color:#bfeaff;line-height:1.45}.side-status small{color:#7395b2;font-size:.62rem}.live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#31e7ad;box-shadow:0 0 12px #31e7ad;margin-right:5px}
-    [data-testid="stSidebar"] .stPageLink{border-radius:10px;margin:2px 0;padding:.34rem .55rem}.stPageLink:hover{background:rgba(44,132,196,.16)}
-    [data-testid="stSidebar"] .stSelectbox label{font-size:.7rem;color:#789bb8}
+    section[data-testid="stSidebar"] .stPageLink{border-radius:10px;margin:2px 0;padding:.34rem .55rem}section[data-testid="stSidebar"] .stPageLink:hover{background:rgba(44,132,196,.16)}
+    section[data-testid="stSidebar"] .stSelectbox label{font-size:.7rem;color:#789bb8}
     .pts-hero{position:relative;overflow:hidden;border:1px solid #245b82;border-radius:24px;padding:23px 28px 18px;margin-bottom:15px;min-height:165px;background:linear-gradient(90deg,rgba(4,19,35,.98) 0%,rgba(5,25,44,.92) 54%,rgba(6,32,53,.78) 100%);box-shadow:0 18px 55px rgba(0,0,0,.28)}
     .pts-hero:after{content:"";position:absolute;right:-5%;top:-25%;width:45%;height:260px;background:radial-gradient(circle,rgba(34,211,238,.18),transparent 67%);pointer-events:none}
     .hero-top{display:flex;justify-content:space-between;gap:30px;align-items:flex-start;position:relative;z-index:1}.hero-slogan{font-size:1rem;color:#e7f8ff;text-align:right;line-height:1.35;margin-top:7px;font-family:Georgia,serif;text-shadow:0 2px 14px #00101d}.hero-bottom{display:flex;align-items:center;gap:12px;margin-top:13px;position:relative;z-index:1}.hero-note{font-size:.68rem;color:#86a9c5}
